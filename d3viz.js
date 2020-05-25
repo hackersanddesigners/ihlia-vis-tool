@@ -8,7 +8,7 @@ let height = 25000;
 
 let svg;
 
-d3.json("fst.json")
+d3.json('data/IHLIA_2020-05-03-160340.json')
   .then(function(data) {
 
     x.domain(data.map((d)=> {
