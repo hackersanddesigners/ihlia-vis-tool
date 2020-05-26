@@ -43,7 +43,7 @@ def lookup_gender(author_list):
                         'Q6581072': 'female',
                         'Q1097630': 'intersex',
                         'Q1052281': 'transgender female',
-                        'Q2449503': 'transgender male'}.get(gender_id, 'unknown')
+                        'Q2449503': 'transgender male'}.get(gender_id)
 
           gender_list.append(gender)
 
