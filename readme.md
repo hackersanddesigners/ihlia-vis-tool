@@ -27,11 +27,13 @@ then, make a new folder called `data`:
 $ mkdir data
 ```
 
+### to fetch all the records
+
 ```
 $ python get-records.py IHLIA
 ```
 
-to update the records with gender data:
+### to update the records with gender data
 
 ```
 $ python get-gender.py <name-of-the-file-with-records>
