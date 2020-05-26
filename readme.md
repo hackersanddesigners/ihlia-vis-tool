@@ -21,9 +21,11 @@ $ pipenv install
 $ pipenv shell
 ```
 
-then, make a new folder called `data`.
+then, make a new folder called `data`:
 
-to fetch all the records:
+```
+$ mkdir data
+```
 
 ```
 $ python get-records.py IHLIA
