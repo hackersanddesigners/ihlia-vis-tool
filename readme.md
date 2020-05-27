@@ -7,7 +7,17 @@ these scripts do the following:
 2. `get-gender.py`, read over the above records and query `wikidata` to lookup the authors’ gender from each record, then write another file with each record from with the new gender data;
   - if `wikidata` does not found the author name, the gender field is set to `not-found`
 
+## prerequisites
+
+- an API key for the zoeken.oba.nl API (ask H&D)
+
 ## usage
+
+before doing anything, you need to place your API key in a `.env` file like so:
+
+```
+oba_api_key=aaaabbbbcccc  # replace with the actual API key
+```
 
 all code runs with `python 3.7.3`. the list of packages needed are listed in the `Pipfile`. we use [pipenv](https://pipenv.pypa.io/en/latest/) to manage the python environment. use whatever fits your workflow, as long as you install the packages.
 
