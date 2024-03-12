@@ -5,7 +5,7 @@ A fork of the small visualization tool built by the design team during Digital M
 
 The visualisation tool was developed further by Alice Strete and Angeliki Diakrousi, with the help of André Fincato as part of the [Feminist Search Tools](https://feministsearchtools.nl/) project.
 
-The tool is built using [D3 js] (https://d3js.org/).
+The tool is built using [D3 js](https://d3js.org/).
 
 *Clusters:*
 
