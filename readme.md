@@ -19,17 +19,11 @@ before doing anything, you need to place your API key in a `.env` file like so:
 oba_api_key=aaaabbbbcccc  # replace with the actual API key
 ```
 
-all code runs with `python 3.7.3`. the list of packages needed are listed in the `Pipfile`. we use [pipenv](https://pipenv.pypa.io/en/latest/) to manage the python environment. use whatever fits your workflow, as long as you install the packages.
+all code runs with `python 3.7.3` (and above):
 
-if using `pipenv`:
-
-```
-# install packages
-$ pipenv install
-
-# activate python environment
-$ pipenv shell
-```
+- make virtual environment: `python3 -m venv env`
+- activate virtual environment: `source env/bin/activate`
+- install packages: `pip install -r requirements.txt`
 
 then, make a new folder called `data`:
 
