@@ -1,8 +1,6 @@
 .DS_Store
-data
-.env
 
-devenv.nix
-devenv.lock
-.devenv
-.devenv.flake.nix
+env
+
+.env
+data
