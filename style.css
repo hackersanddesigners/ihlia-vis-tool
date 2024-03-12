@@ -1,0 +1,149 @@
+@font-face {
+  font-family: compagnon;
+  src: url(data/compagnon/Compagnon-Roman.otf);
+}
+
+body {
+  margin-top: 2%;
+  padding-left: 1rem;
+}
+
+svg {
+  background: transparent;
+}
+
+.active {
+  color: black;
+}
+
+a {
+  text-decoration: none;
+  color: gray;
+  font-size: 1em;
+}
+
+ul {
+  list-style-type: none;
+  font-size: .8em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+h2  {
+  margin: 0 auto;
+  font-size: 1em;
+  max-width: 40em;
+  text-align: center;
+  font-family: compagnon;
+}
+
+h1  {
+  top: 0px;
+  margin: 0 auto 0.5em auto;
+  font-size: 1.4em;
+  text-align: center;
+  font-family: compagnon;
+}
+
+h3  {
+  margin: 0 auto;
+  font-size: 0.8em;
+  font-family: compagnon;
+}
+
+.x-axis {
+  position: fixed;
+  background-color:transparent;
+}
+
+.tooltipxaxis {
+ min-width:20em;
+  border: 1px dashed;
+  padding-right: 1.2em;
+  font-family: compagnon;
+  font-size: 1rem;
+  /* overflow:scroll; */
+  max-width: 20em;
+}
+
+#boxsexuality, #boxgender, #boxrace, #boxstructural, #boxdisability, #boxgeneral {
+ border: 1px solid black;
+ height: 10px;
+ width: 8px;
+ display: inline-block;
+}
+
+#boxsexuality {
+  background-color:#fb7f71;
+}
+
+#boxdisability {
+  background-color: #81afd2;
+}
+
+#boxgender {
+  background-color: #bb7fba;
+}
+
+#boxstructural {
+  background-color: #fdb264;
+}
+
+#boxrace {
+  background-color: #fccbe4;
+}
+
+#boxgeneral {
+  background-color: #b0dd6b;
+}
+
+#legend li {
+  padding-bottom: 5px;
+}
+
+#message {
+font-size:0.8em;
+font-family: compagnon;
+
+}
+
+.tick:hover{
+font-style: italic;
+/* font-weight: bold; */
+}
+
+/* #menu, #legend {
+
+} */
+
+#menu ul {
+border:1px black solid;
+}
+
+#legend ul {
+border:1px black solid;
+min-width: 30em;
+font-size: .6em;
+}
+
+table {
+  margin-left: 2%;
+  margin-top: 0px;
+  padding-left:0.5em;
+  border-collapse: separate;
+  border-spacing: 100px 0;
+  width: 100%;
+  /* position: fixed; */
+}
+
+td {
+  min-width: 11em;
+}
+
+#publishers {
+  border:1px black solid;
+  margin-right: 85%;
+  padding-right: 1em;
+  padding-left: 0.5em;
+  font-size: .8em;
+}

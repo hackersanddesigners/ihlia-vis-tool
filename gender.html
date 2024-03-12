@@ -16,10 +16,11 @@
         <h3>Clusters:</h3>
         <ul>
           <li><a href="race.html">Race</a></li>
-          <li><a href="gender.html">Gender</a></li>
+          <li><a class="active" href="gender.html">Gender</a></li>
           <li><a href="sexuality.html">Sexuality</a></li>
-          <li><a class="active" href="index.html">Disability</a></li>
+          <li><a href="index.html">Disability</a></li>
           <li><a href="structural-oppression.html">Structural Oppression</a></li>
+
         </ul>
       </td>
       <td colspan="2"><h1>Why are the books I read so white, so male, so Eurocentric?</h1><h2>Feminist Search Tools in collaboration with<br>IHLIA LGBTI Heritage Collection <br>(using the Dutch Homosaurus)</h2></td>
@@ -46,22 +47,24 @@
   </table>
   <div id="publishers">Most encountered publishers in IHLIA Collection</div>
 
+
+
   <div id="fst">
     <div class="x-axis"></div>
     <div class="y-axis"></div>
   </div>
 
   <script>
-   $(window).scroll(function(event) {
+    $(window).scroll(function(event) {
      $(".x-axis").css("margin-left", 0-$(document).scrollLeft());
-   });
-
+  });
   </script>
 
   <script src="https://d3js.org/d3.v5.js"></script>
   <script src="https://d3js.org/d3-color.v1.min.js"></script>
   <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
   <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+  <!-- <script src="d3viz_gender.js"></script> -->
   <script src="d3viz_disability.js"></script>
 </body>
 </html>

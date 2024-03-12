@@ -1,64 +1,119 @@
-# ihlia visualization tool
+fst viz tool
+============
 
-## intro
+A fork of the small visualization tool built by the design team during Digital Methods Summer School 2019, Amsterdam.
 
-these scripts do the following:
-1. `get-records.py`, fetch all the records from the OBA library API with keyword `Bibliotheek=IHLIA`, and save it to a json file inside `data` folder
-2. `get-gender.py`, read over the above records and query `wikidata` to lookup the authors’ gender from each record, then write another file with each record from with the new gender data;
-  - if `wikidata` does not found the author name, the gender field is set to `not-found`
+The visualisation tool was developed further by Alice Strete and Angeliki Diakrousi, with the help of André Fincato as part of the [Feminist Search Tools] (https://fst.swummoq.net/) project.
 
-## prerequisites
+The tool is built using [D3 js] (https://d3js.org/).
 
-- an API key for the zoeken.oba.nl API (ask H&D)
+*Clusters:*
+
+After long discussion we had with fst we decided to create specific clusters of terms, represented in different x-axes, that would help us have a situated perspective on the collection and see what books reflect the questions we addressed in our discussions - for example how much are race and disability reflected in the collection.  We wanted to challenge the categorization of books in public library structures and the lack of opportunities to intervene in these categories. These standard categorization systems are often institutional and carry biases. They also restrict the intersectionality and flexibility of the character or potential identities of books.
+
+*Hovers on axis terms:*
+
+When hovering on the terms you can see more information about each term
+Interventions from FST, context from homosaurus, related terms that are not necessarily connected in homosaurus, terms we would like to change depending on preferred terms in society, terms that are not currently part of the descriptions, and even expanding the meaning of a term.
+
+*Red links:*
+
+Terms that don't exist in the current categories but are proposed as potential new categories (they don't have any books) - highlighted in red
+
+*Groups of books*
+
+The intersection between a publisher and a certain term on the x axis, on hover you can see title, author and other terms found in the description of the book, either from the same cluster or another or even terms that are not in any cluster
+
+*Intersectionality:*
+
+Each cluster has it's own color. To highlight intersectionality we also searched for books that have descriptions belonging to two different clusters - these are made visible through the use of these colors
 
 ## usage
 
-before doing anything, you need to place your API key in a `.env` file like so:
+we need a local server in order to open `index.html` and avoid nasty [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors) errors ([ref](https://stackoverflow.com/a/27986564))
+
+to do that, open a terminal and check your python version
 
 ```
-oba_api_key=aaaabbbbcccc  # replace with the actual API key
+python -V
 ```
 
-all code runs with `python 3.7.3` (and above):
-
-- make virtual environment: `python3 -m venv env`
-- activate virtual environment: `source env/bin/activate`
-- install packages: `pip install -r requirements.txt`
-
-then, make a new folder called `data`:
+if you have python 3, do (inside the project folder)
 
 ```
-$ mkdir data
+python -m http.server
 ```
 
-### to fetch all the records
+if you have python (2), do
 
 ```
-$ python get-records.py IHLIA
+python -m SimpleHTTPServer
 ```
 
-### to update the records with gender data
+in the terminal output, you should see
 
 ```
-$ python get-gender.py <name-of-the-file-with-records>
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
 ```
 
-the script picks the file in the data folder directly, just pass the filename. for example:
+open your web browser and paste in
 
 ```
-$ python get-gender.py IHLIA_2020-05-25-234454
+http://0.0.0.0:8000/
 ```
 
-a new file named `IHLIA-<timestamp>-update.json` should appear in the `data` folder.
+the visualization tool should be loading fine!
 
-## current limits, to improve
+### import-data
 
-many records from the OBA APIs / IHLIA have no authors field. more double-checking should be done in here.
+use `import-data.py` to create subset of data from the main dataset. for the original dataset used in the project, contact the developers.
 
-lots of author names are not found on `wikidata`. the current code does not handle data with a fallback to a different source, so the gender field gets set to `not-found`.
+the command takes two arguments:
 
-## options
+- the input source
+- the data topic
 
-when querying `wikidata` in `get-gender.py`, currently the `&sites=` parameters (line 15) is hard-coded to `nlwiki`. changing that to `enwiki` did not improve the results, but should be kept into account for further experimentation.
+```
+python import-data.py </path/to/source-dataset.json> <topic>
+```
 
-in the same, way, on line 33, the `props` passed when querying for the author are hard-coded, they could possibly be changed and adapted to something else.
+eg
+
+```
+python import-data.py ./data/dataset_selection.json sexuality
+```
+
+this will automatically output the new sub-dataset to the `./data/` folder, using the `topic` argument to save the file. with the example above, the file will be saved as `dataset_sexuality.json`. do this for every topic available.
+
+## setup
+
+the dataset used by `d3` is set in `d3viz.js`, at line `11`:
+
+```
+d3.json("fst.json")
+```
+
+you can change the path to the file (`fst.json`), with another file.
+
+each record in the `json` array *needs* to follow this structure:
+
+```
+{
+  "title":
+    "Example title",
+  "author":
+    "Example author",
+  "publisher":
+    "Example publisher",
+  "description":
+    "Example description",
+  "description_second":
+    "Example extra description",
+  "other_descriptions":
+    ["example1", "example2", "example3"]
+},
+```
+
+you can add more records to your dataset, but keeping this data structure.
+
+you can of course change data structure by changing the `d3viz.js` script, eg by asking d3 to print other keys from the list of records in your dataset json file. review the `d3viz.js` by doing a search-query of any key (eg `free_descriptors`) you want to change and see where it’s being used in the script. then replace them with the new keys you want to use.
